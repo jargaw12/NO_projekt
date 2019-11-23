@@ -88,6 +88,12 @@ public interface CVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitRelationalExpression(CParser.RelationalExpressionContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link CParser#noOperandExpression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitNoOperandExpression(CParser.NoOperandExpressionContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link CParser#equalityExpression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -303,6 +309,12 @@ public interface CVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitDirectDeclarator(CParser.DirectDeclaratorContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link CParser#table}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitTable(CParser.TableContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link CParser#gccDeclaratorExtension}.
 	 * @param ctx the parse tree

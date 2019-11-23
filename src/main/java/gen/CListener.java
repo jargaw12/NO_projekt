@@ -137,6 +137,16 @@ public interface CListener extends ParseTreeListener {
 	 */
 	void exitRelationalExpression(CParser.RelationalExpressionContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link CParser#noOperandExpression}.
+	 * @param ctx the parse tree
+	 */
+	void enterNoOperandExpression(CParser.NoOperandExpressionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link CParser#noOperandExpression}.
+	 * @param ctx the parse tree
+	 */
+	void exitNoOperandExpression(CParser.NoOperandExpressionContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link CParser#equalityExpression}.
 	 * @param ctx the parse tree
 	 */
@@ -496,6 +506,16 @@ public interface CListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitDirectDeclarator(CParser.DirectDeclaratorContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link CParser#table}.
+	 * @param ctx the parse tree
+	 */
+	void enterTable(CParser.TableContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link CParser#table}.
+	 * @param ctx the parse tree
+	 */
+	void exitTable(CParser.TableContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link CParser#gccDeclaratorExtension}.
 	 * @param ctx the parse tree

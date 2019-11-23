@@ -166,6 +166,7 @@ conditionalExpression
 
 assignmentExpression
     :   conditionalExpression
+    |   table assignmentOperator assignmentExpression
     |   unaryExpression assignmentOperator assignmentExpression
     |   DigitSequence // for
     ;
@@ -182,7 +183,7 @@ expression
 constantExpression
     :   conditionalExpression
     ;
-
+//
 declaration
     :   declarationSpecifiers initDeclaratorList ';'
 	| 	declarationSpecifiers ';'
@@ -212,6 +213,7 @@ initDeclaratorList
 
 initDeclarator
     :   declarator
+    |   table
     |   declarator '=' initializer
     ;
 
@@ -330,12 +332,14 @@ alignmentSpecifier
 
 declarator
     :   pointer? directDeclarator gccDeclaratorExtension*
+//    |table
     ;
 
 directDeclarator
     :   Identifier
     |   '(' declarator ')'
-    |   directDeclarator '[' typeQualifierList? assignmentExpression? ']'
+//    |   directDeclarator '[' typeQualifierList? assignmentExpression? ']'
+//    |   table
     |   directDeclarator '[' 'static' typeQualifierList? assignmentExpression ']'
     |   directDeclarator '[' typeQualifierList 'static' assignmentExpression ']'
     |   directDeclarator '[' typeQualifierList? '*' ']'
@@ -345,7 +349,10 @@ directDeclarator
     |   '(' typeSpecifier? pointer directDeclarator ')' // function pointer like: (__cdecl *f)
     ;
 
-
+table
+    :  Identifier '[' typeQualifierList? assignmentExpression? ']'
+    |  table '[' typeQualifierList? assignmentExpression? ']'
+    ;
 
 gccDeclaratorExtension
     :   '__asm' '(' StringLiteral+ ')'
@@ -532,6 +539,7 @@ jumpStatement
     |   'goto' unaryExpression ';' // GCC extension
     ;
 
+//START
 compilationUnit
     :   translationUnit? EOF
     ;

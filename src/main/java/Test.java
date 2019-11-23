@@ -12,7 +12,7 @@ import java.io.InputStream;
 import java.net.URISyntaxException;
 
 public class Test {
-    private final static String FILE_NAME = "Program2.c";
+    private final static String FILE_NAME = "Program4.c";
 
     public void test() throws IOException, URISyntaxException {
         File file = new File(getClass().getResource(FILE_NAME).getFile());
