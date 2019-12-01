@@ -6,28 +6,24 @@ import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.net.URISyntaxException;
+import java.nio.file.Files;
 
-public class Test {
-    private final static String FILE_NAME = "Program4.c";
-
-    public void test() throws IOException, URISyntaxException {
-        File file = new File(getClass().getResource(FILE_NAME).getFile());
-        InputStream inputStream = new FileInputStream(file);
-        CharStream in = CharStreams.fromStream(inputStream);
+public class CAnalyser {
+    public void analyse(File file) throws IOException {
+        String content = new String(Files.readAllBytes(file.toPath()));
+        String modifiedContent = content.replaceAll("#define .*", "");
+        CharStream in = CharStreams.fromString(modifiedContent);
         CLexer lexer = new CLexer(in);
         CommonTokenStream tokens = new CommonTokenStream(lexer);
         CParser parser = new CParser(tokens);
         parser.setBuildParseTree(true);
         ParseTree tree = parser.compilationUnit();
-        System.out.println(tree.toStringTree(parser));
 
         int errors = parser.getNumberOfSyntaxErrors();
         TreeEvaluationVisitor visitor = new TreeEvaluationVisitor(parser);
         if (errors == 0) {
+            System.out.println("Analiza programu: " + file.getName());
             visitor.visit(tree);
             visitor.counter.printStatistics();
         } else {
@@ -35,6 +31,5 @@ public class Test {
             System.out.println("Liczba błędów syntaktycznych: " + errors);
 
         }
-//        System.out.println(tree.toStringTree(parser));
     }
 }

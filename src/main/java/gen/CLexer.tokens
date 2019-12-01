@@ -116,6 +116,7 @@ Whitespace=115
 Newline=116
 BlockComment=117
 LineComment=118
+Define=119
 '__extension__'=1
 '__builtin_va_arg'=2
 '__builtin_offsetof'=3

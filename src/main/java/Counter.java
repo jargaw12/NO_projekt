@@ -24,13 +24,11 @@ public class Counter {
     public void printOperators() {
         System.out.println("Operatory:");
         System.out.println(operators.toString());
-//        operators.forEach((key, value) -> System.out.println(key + ": " + value));
     }
 
     public void printOperands() {
         System.out.println("Operandy:");
         System.out.println(operands.toString());
-//        operands.forEach((key, value) -> System.out.println(key + ": " + value));
     }
 
     public int getUniqueOperatorsCount() {
@@ -69,28 +67,23 @@ public class Counter {
         return getCapacity() * getDifficulty();
     }
 
-    public double expectedErrorCount1() {
+    public double expectedErrorCount() {
         return getCapacity() / 3000.0;
-    }
-
-    public double expectedErrorCount2() {
-        return Math.pow(getWorkload(), (2.0 / 3.0)) / 3000.0;
     }
 
     public void printStatistics() {
         printOperators();
         printOperands();
-        System.out.println("Liczba unikalnych operatorów: " + getUniqueOperatorsCount());
-        System.out.println("Liczba unikalnych operandów: " + getUniqueOperandsCount());
-        System.out.println("Lączna liczba operatorów: " + getOperatorsCount());
-        System.out.println("Lączna liczba operandów: " + getOperandsCount());
-        System.out.println("Słownik: " + getDictionary());
-        System.out.println("Długość: " + getLength());
-        System.out.println("Objętość: " + getCapacity());
-        System.out.println("Trudność programu: " + getDifficulty());
-        System.out.println("Wymagany nakład pracy: " + getWorkload());
-        System.out.println("Przewidywana liczba błędów1: " + expectedErrorCount1());
-        System.out.println("Przewidywana liczba błędów2: " + expectedErrorCount2());
+        System.out.println("Liczba unikalnych operatorów:\t" + getUniqueOperatorsCount());
+        System.out.println("Liczba unikalnych operandów:\t" + getUniqueOperandsCount());
+        System.out.println("Łączna liczba operatorów:\t\t" + getOperatorsCount());
+        System.out.println("Łączna liczba operandów:\t\t" + getOperandsCount());
+        System.out.println("Słownik:\t" + getDictionary());
+        System.out.println("Długość:\t" + getLength());
+        System.out.println("Objętość:\t" + String.format("%.4f", getCapacity()));
+        System.out.println("Trudność:\t" + String.format("%.4f", getDifficulty()));
+        System.out.println("Wymagany nakład pracy:\t\t" + String.format("%.4f", getWorkload()));
+        System.out.println("Przewidywana liczba błędów:\t" + String.format("%.4f", expectedErrorCount()));
     }
 
     private static double log2(int n) {

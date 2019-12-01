@@ -56,7 +56,8 @@ genericAssociation
 postfixExpression
     :   primaryExpression
     |   postfixExpression '[' expression ']'
-    |   postfixExpression '(' argumentExpressionList? ')'
+//    |   postfixExpression '(' argumentExpressionList? ')'
+    |   functionCall
     |   postfixExpression '.' Identifier
     |   postfixExpression '->' Identifier
     |   postfixExpression '++'
@@ -65,6 +66,10 @@ postfixExpression
     |   '(' typeName ')' '{' initializerList ',' '}'
     |   '__extension__' '(' typeName ')' '{' initializerList '}'
     |   '__extension__' '(' typeName ')' '{' initializerList ',' '}'
+    ;
+
+functionCall
+    :   Identifier '(' argumentExpressionList? ')'
     ;
 
 argumentExpressionList
@@ -960,3 +965,8 @@ LineComment
     :   '//' ~[\r\n]*
         -> skip
     ;
+
+Define
+    : '#define' ~[\r\n]*
+    -> skip
+;

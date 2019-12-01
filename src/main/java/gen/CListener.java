@@ -57,6 +57,16 @@ public interface CListener extends ParseTreeListener {
 	 */
 	void exitPostfixExpression(CParser.PostfixExpressionContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link CParser#functionCall}.
+	 * @param ctx the parse tree
+	 */
+	void enterFunctionCall(CParser.FunctionCallContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link CParser#functionCall}.
+	 * @param ctx the parse tree
+	 */
+	void exitFunctionCall(CParser.FunctionCallContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link CParser#argumentExpressionList}.
 	 * @param ctx the parse tree
 	 */

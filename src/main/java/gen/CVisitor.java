@@ -40,6 +40,12 @@ public interface CVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitPostfixExpression(CParser.PostfixExpressionContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link CParser#functionCall}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFunctionCall(CParser.FunctionCallContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link CParser#argumentExpressionList}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
